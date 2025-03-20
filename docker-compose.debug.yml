@@ -1,0 +1,18 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
+
+version: '3.4'
+
+services:
+  auctionservice:
+    image: auctionservice
+    build:
+      context: .
+      dockerfile: src/AuctionService/Dockerfile
+      args:
+        - configuration=Debug
+    ports:
+      - 5151:5151
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw
