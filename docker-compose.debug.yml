@@ -3,15 +3,15 @@
 version: '3.4'
 
 services:
-  auctionservice:
-    image: auctionservice
+  searchservice:
+    image: searchservice
     build:
       context: .
-      dockerfile: src/AuctionService/Dockerfile
+      dockerfile: src/SearchService/Dockerfile
       args:
         - configuration=Debug
     ports:
-      - 5151:5151
+      - 5246:5246
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     volumes:

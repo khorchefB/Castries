@@ -32,7 +32,7 @@
             "request": "launch",
             "preLaunchTask": "docker-run: debug",
             "netCore": {
-                "appProject": "${workspaceFolder}/src/AuctionService/AuctionService.csproj"
+                "appProject": "${workspaceFolder}/src/SearchService/SearchService.csproj"
             }
         }
     ]

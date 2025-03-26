@@ -10,15 +10,18 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - /var/lib/postgresql/data
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: doudou
+    ports:
+      - 27017:27017
+    volumes:
+      - /var/lib/mongodb/data
 
-  # auctionservice:
-  #   image: auctionservice
-  #   build:
-  #     context: .
-  #     dockerfile: src/AuctionService/Dockerfile
-  #   ports:
-  #     - 5151:5151
-
-volumes:
-  pgdata:
+# volumes:
+#   pgdata: 
+#   mongodata:
