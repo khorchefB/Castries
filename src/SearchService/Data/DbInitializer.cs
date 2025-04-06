@@ -23,6 +23,7 @@ public static class DbInitializer
             using var scope = app.Services.CreateScope();
             var httpClient = scope.ServiceProvider.GetRequiredService<AuctionSvcHttpClient>();
             var items = await httpClient.GetItemsForSerachDb();
+            await items.SaveAsync();
             Console.WriteLine($"{items.Count()} returned from the auction service");
         }catch(Exception e){
             Console.WriteLine(e);

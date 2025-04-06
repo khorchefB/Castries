@@ -1,0 +1,10 @@
+global using MassTransit;
+global using System.Reflection;
+global using SearchService.Data;
+global using SearchService.Services.Extensions;
+global using AuctionService.Extensions;
+global using SearchService.Consumers;
+global using AutoMapper;
+global using Contracts;
+global using MongoDB.Entities;
+global using SearchService.Models;

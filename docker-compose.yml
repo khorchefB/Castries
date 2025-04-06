@@ -21,7 +21,11 @@ services:
       - 27017:27017
     volumes:
       - /var/lib/mongodb/data
-
+  rabbitMq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - 5672:5672
+      - 15672:15672
 # volumes:
 #   pgdata: 
 #   mongodata:

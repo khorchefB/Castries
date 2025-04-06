@@ -17,7 +17,7 @@ public class AuctionSvcHttpClient
     public async Task<List<Item>> GetItemsForSerachDb(){
         var lastUpdated = await DB.Find<Item, string>().Sort(x => x.Descending(x => x.UpdatedAt))
                                                        .Project(x => x.UpdatedAt.ToString())
-                                                       .ExecuteAnyAsync();
+                                                       .ExecuteFirstAsync();
         return await _httpClient.GetFromJsonAsync<List<Item>>($"{_config["AuctionServiceUrl"]}/api/auctions?date={lastUpdated}");
     } 
 }

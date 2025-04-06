@@ -1,6 +1,3 @@
-using AuctionService.Data;
-using Microsoft.EntityFrameworkCore;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,17 +7,17 @@ builder.Services.AddDbContext<AuctionDbContext>(opt => {
     opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
- 
-var app = builder.Build();
+builder.Services.AddMassTransitConfiguration(builder.Configuration, Assembly.GetExecutingAssembly());
 
 // Configure the HTTP request pipeline.
+ var app = builder.Build();
 app.UseAuthorization();
 
 app.MapControllers();
 
 
 try{
-    app.InitiDb();
+    await app.InitiDb();
 }catch  (Exception e)
 {
     Console.WriteLine(e);

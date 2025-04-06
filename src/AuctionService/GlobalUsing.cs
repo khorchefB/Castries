@@ -1,0 +1,11 @@
+global using AuctionService.Data;
+global using MassTransit;
+global using Microsoft.EntityFrameworkCore;
+global using AuctionService.DTOs;
+global using AuctionService.Entities;
+global using AutoMapper;
+global using Contracts;
+global using Microsoft.AspNetCore.Mvc;
+global using AutoMapper.QueryableExtensions;
+global using System.Reflection;
+global using AuctionService.Extensions;
