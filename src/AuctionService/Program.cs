@@ -1,3 +1,6 @@
+
+using Microsoft.AspNetCore.Builder;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,9 +11,17 @@ builder.Services.AddDbContext<AuctionDbContext>(opt => {
 });
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddMassTransitConfiguration(builder.Configuration, Assembly.GetExecutingAssembly());
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options => {
+                    options.Authority = builder.Configuration["IdentityServiceUrl"];
+                    options.RequireHttpsMetadata = false;
+                    options.TokenValidationParameters.ValidateAudience = false;
+                    options.TokenValidationParameters.NameClaimType = "username";
+                });
 
 // Configure the HTTP request pipeline.
  var app = builder.Build();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

@@ -9,3 +9,4 @@ global using Microsoft.AspNetCore.Mvc;
 global using AutoMapper.QueryableExtensions;
 global using System.Reflection;
 global using AuctionService.Extensions;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;

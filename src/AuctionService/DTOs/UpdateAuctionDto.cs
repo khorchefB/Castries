@@ -17,8 +17,6 @@ public class UpdateAuctionDto
     public string Color { get; set; }
     [Required]
     public int? Mileage { get; set; }
-    [Required]
     public string ImageUrl { get; set; }
-    [Required]
     public int ReservePrice { get; set; }
 }
