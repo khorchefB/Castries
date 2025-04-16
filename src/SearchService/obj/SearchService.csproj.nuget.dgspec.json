@@ -121,7 +121,7 @@
             },
             "MassTransit.RabbitMQ": {
               "target": "Package",
-              "version": "[8.4.1-develop.2250, )"
+              "version": "[8.4.1-develop.2255, )"
             },
             "Microsoft.Extensions.Http.Polly": {
               "target": "Package",

@@ -47,10 +47,10 @@
           }
         }
       },
-      "MassTransit/8.4.1-develop.2250": {
+      "MassTransit/8.4.1-develop.2255": {
         "type": "package",
         "dependencies": {
-          "MassTransit.Abstractions": "8.4.1-develop.2250",
+          "MassTransit.Abstractions": "8.4.1-develop.2255",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
           "Microsoft.Extensions.Diagnostics.HealthChecks": "8.0.0",
           "Microsoft.Extensions.Hosting.Abstractions": "8.0.0",
@@ -68,7 +68,7 @@
           }
         }
       },
-      "MassTransit.Abstractions/8.4.1-develop.2250": {
+      "MassTransit.Abstractions/8.4.1-develop.2255": {
         "type": "package",
         "compile": {
           "lib/net8.0/MassTransit.Abstractions.dll": {
@@ -81,10 +81,10 @@
           }
         }
       },
-      "MassTransit.RabbitMQ/8.4.1-develop.2250": {
+      "MassTransit.RabbitMQ/8.4.1-develop.2255": {
         "type": "package",
         "dependencies": {
-          "MassTransit": "8.4.1-develop.2250",
+          "MassTransit": "8.4.1-develop.2255",
           "RabbitMQ.Client": "7.1.2"
         },
         "compile": {
@@ -813,10 +813,10 @@
         "lib/netstandard2.1/DnsClient.xml"
       ]
     },
-    "MassTransit/8.4.1-develop.2250": {
-      "sha512": "3brWzOmUvVtbKm/H0j/WbEad0IbmuYDE7MLrG2jHLinQqKB5hWcxweKNulh14E4FTfyZjtCW+EB5nRIIjv0i4w==",
+    "MassTransit/8.4.1-develop.2255": {
+      "sha512": "Oj9fn9im9G/UQKdGpkTPQiqQEmNVA1bXpYU0oMZuEoYk27mh3mkDH7rkHgaDXNY+rVFk9ex1HerBheJ9xTHTsA==",
       "type": "package",
-      "path": "masstransit/8.4.1-develop.2250",
+      "path": "masstransit/8.4.1-develop.2255",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -829,15 +829,15 @@
         "lib/net9.0/MassTransit.xml",
         "lib/netstandard2.0/MassTransit.dll",
         "lib/netstandard2.0/MassTransit.xml",
-        "masstransit.8.4.1-develop.2250.nupkg.sha512",
+        "masstransit.8.4.1-develop.2255.nupkg.sha512",
         "masstransit.nuspec",
         "mt-logo-small.png"
       ]
     },
-    "MassTransit.Abstractions/8.4.1-develop.2250": {
-      "sha512": "71lenx0S1vjQV07qzqEPIGRJTvtBynKphT37JoZ32GKzEKBgnjJXtTP7Hx7Vl2sT3wiu3Gw3L2zA04tKAS0TMw==",
+    "MassTransit.Abstractions/8.4.1-develop.2255": {
+      "sha512": "+h0PNf3xbQ8qOwEAT9daGregFiQB9jrGtfOaT76DYlBxqpjdhU5Nj1ZsuhZFuhPooAh95DLkv8eixheztxExKQ==",
       "type": "package",
-      "path": "masstransit.abstractions/8.4.1-develop.2250",
+      "path": "masstransit.abstractions/8.4.1-develop.2255",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -850,15 +850,15 @@
         "lib/net9.0/MassTransit.Abstractions.xml",
         "lib/netstandard2.0/MassTransit.Abstractions.dll",
         "lib/netstandard2.0/MassTransit.Abstractions.xml",
-        "masstransit.abstractions.8.4.1-develop.2250.nupkg.sha512",
+        "masstransit.abstractions.8.4.1-develop.2255.nupkg.sha512",
         "masstransit.abstractions.nuspec",
         "mt-logo-small.png"
       ]
     },
-    "MassTransit.RabbitMQ/8.4.1-develop.2250": {
-      "sha512": "t+URf6FWSppCDkLg263frfJ3EAujhkQlH3JZEzeW5QjHJ08+JioJBjFkfjsmnVByStJmEcWVR+RDXcTGIA9rEQ==",
+    "MassTransit.RabbitMQ/8.4.1-develop.2255": {
+      "sha512": "i+v5v7bFJ81FxgH5/Ce55epjCmqBcz8cm3uGkO+yjtYcXFfp68ZoVHK3L43ODxT1hv3Yo4IlJ6qSs9UFA3GCsQ==",
       "type": "package",
-      "path": "masstransit.rabbitmq/8.4.1-develop.2250",
+      "path": "masstransit.rabbitmq/8.4.1-develop.2255",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -871,7 +871,7 @@
         "lib/net9.0/MassTransit.RabbitMqTransport.xml",
         "lib/netstandard2.0/MassTransit.RabbitMqTransport.dll",
         "lib/netstandard2.0/MassTransit.RabbitMqTransport.xml",
-        "masstransit.rabbitmq.8.4.1-develop.2250.nupkg.sha512",
+        "masstransit.rabbitmq.8.4.1-develop.2255.nupkg.sha512",
         "masstransit.rabbitmq.nuspec",
         "mt-logo-small.png"
       ]
@@ -2035,7 +2035,7 @@
     "net8.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.1",
       "Contracts >= 1.0.0",
-      "MassTransit.RabbitMQ >= 8.4.1-develop.2250",
+      "MassTransit.RabbitMQ >= 8.4.1-develop.2255",
       "Microsoft.Extensions.Http.Polly >= 10.0.0-preview.2.25164.1",
       "MongoDB.Entities >= 24.1.1"
     ]
@@ -2098,7 +2098,7 @@
           },
           "MassTransit.RabbitMQ": {
             "target": "Package",
-            "version": "[8.4.1-develop.2250, )"
+            "version": "[8.4.1-develop.2255, )"
           },
           "Microsoft.Extensions.Http.Polly": {
             "target": "Package",
