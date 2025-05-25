@@ -5,13 +5,13 @@ public class AuctionUpdatedConsumer(IMapper _mapper) : IConsumer<AuctionUpdated>
     public async Task Consume(ConsumeContext<AuctionUpdated> context)
     {
         var item = _mapper.Map<Item>(context.Message);
-        var result = DB.Update<Item>().Match(x => x.ID== item.ID).ModifyOnly(x => new {
-            x.Make , 
-            x.Model ,
-            x.Color ,
+        var result =await  DB.Update<Item>().Match(x => x.ID == context.Message.Id).ModifyOnly(x => new {
+            x.Color,
+            x.Make,
+            x.Model,
             x.Mileage,
-            x.Year 
+            x.Year
         }, item).ExecuteAsync();
-        if(!result.IsCompleted) throw new Exception("Problem updating mongodb");
+        if(!result.IsAcknowledged) throw new Exception("Problem updating mongodb");
     }
 }

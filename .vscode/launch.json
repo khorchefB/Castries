@@ -1,25 +1,19 @@
 {
-    "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (web)",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build",
-            "program": "${workspaceFolder}/src/AuctionService/bin/Debug/net8.0/AuctionService.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}/src/AuctionService",
-            "stopAtEntry": false,
-            "serverReadyAction": {
-                "action": "openExternally",
-                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
-            },
-            "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
-            },
+            "name": "Containers .NET Attach (Preview)",
+            "type": "docker",
+            "request": "attach",
+            "platform": "netCore",
             "sourceFileMap": {
-                "/Views": "${workspaceFolder}/Views"
+                "/app": "${workspaceFolder}"
             }
+        },
+        {
+            "name": "C#: <project-name> Debug",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/<relative-path-to-project-folder><project-name>.csproj"
         },
         {
             "name": ".NET Core Attach",
@@ -27,12 +21,12 @@
             "request": "attach"
         },
         {
-            "name": "Docker .NET Launch",
+            "name": "Containers: .NET Launch",
             "type": "docker",
             "request": "launch",
             "preLaunchTask": "docker-run: debug",
             "netCore": {
-                "appProject": "${workspaceFolder}/src/SearchService/SearchService.csproj"
+                "appProject": "${workspaceFolder}/src/IdentityServer/IdentityServer.csproj"
             }
         }
     ]

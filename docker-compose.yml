@@ -22,10 +22,72 @@ services:
     volumes:
       - /var/lib/mongodb/data
   rabbitMq:
+    container_name: rabbitMq
+    hostname: rabbitMq
     image: rabbitmq:3-management-alpine
+    restart: always
     ports:
       - 5672:5672
       - 15672:15672
+  auction-svc:
+    image: auction-svc
+    build:
+      context: .
+      dockerfile: src/AuctionService/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Server=postgres; User Id =postgres;Password=postgrespw; Database=auctions
+      - RabbitMq__Host=amqp://rabbitMq:5672
+      - RabbitMq__Username=guest
+      - RabbitMq__Password=guest
+      - IdentityServiceUrl=http://identity-svc
+    ports:
+      - 7001:80
+    depends_on:
+      - postgres
+      - rabbitMq
+  search-svc:
+    image: search-svc
+    build:
+      context: .
+      dockerfile: src/SearchService/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__MongoDbConnection=mongodb://root:doudou@mongo:27017
+      - RabbitMq__Host=amqp://rabbitMq:5672
+      - RabbitMq__Username=guest
+      - RabbitMq__Password=guest
+      - AuctionServiceUrl=auction-svc
+    ports:
+      - 7002:80
+    depends_on:
+      - mongo
+      - rabbitMq
+  identity-svc:
+    image: identityserver
+    build:
+      context: .
+      dockerfile: src/IdentityServer/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Server=postgres; User Id =postgres;Password=postgrespw; Database=identity
+    ports:
+      - 5001:80
+    depends_on:
+      - postgres
+  gateway-svc:
+    image: gateway-svc:latest
+    build:
+      context: .
+      dockerfile: src/GatewayService/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - 6001:80
 # volumes:
 #   pgdata: 
 #   mongodata:

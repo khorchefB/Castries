@@ -14,10 +14,12 @@ public static class AddMassTransit
           config.AddConsumers(assembly);
           config.UsingRabbitMq((context, configurator) =>
           {
-              configurator.Host(new Uri(configuration["MessageBroker:Host"]!), host =>
+            var uri = configuration["RabbitMq:Host"];
+            Console.WriteLine($"RabbitMQ Host: {uri}");
+              configurator.Host(new Uri(configuration["RabbitMq:Host"]!), host =>
               {
-                  host.Username(configuration["MessageBroker:UserName"]);
-                  host.Password(configuration["MessageBroker:Password"]);
+                  host.Username(configuration["RabbitMq:UserName"]);
+                  host.Password(configuration["RabbitMq:Password"]);
               });
               configurator.ConfigureEndpoints(context);
           });

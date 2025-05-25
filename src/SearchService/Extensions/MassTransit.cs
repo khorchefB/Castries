@@ -22,10 +22,10 @@ public static class AddMassTransit
                  e.UseMessageRetry(r => r.Interval(5, 5));
                  e.ConfigureConsumer<AuctionCreatedConsumer>(context);
              });
-             configRabbit.Host(new Uri(configuration["MessageBroker:Host"]!), host =>
+             configRabbit.Host(new Uri(configuration["RabbitMq:Host"]!), host =>
              {
-                 host.Username(configuration["MessageBroker:UserName"]);
-                 host.Password(configuration["MessageBroker:Password"]);
+                 host.Username(configuration["RabbitMq:UserName"]);
+                 host.Password(configuration["RabbitMq:Password"]);
              });
              configRabbit.ConfigureEndpoints(context);
          });
