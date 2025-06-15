@@ -18,6 +18,7 @@ public class AuctionSvcHttpClient
         var lastUpdated = await DB.Find<Item, string>().Sort(x => x.Descending(x => x.UpdatedAt))
                                                        .Project(x => x.UpdatedAt.ToString())
                                                        .ExecuteFirstAsync();
+        Console.WriteLine($"auction service == {_config["AuctionServiceUrl"]}/api/auctions?date={lastUpdated}");
         return await _httpClient.GetFromJsonAsync<List<Item>>($"{_config["AuctionServiceUrl"]}/api/auctions?date={lastUpdated}");
     } 
 }

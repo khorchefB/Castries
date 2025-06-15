@@ -50,14 +50,14 @@ internal static class HostingExtensions
         builder.Services.AddAuthentication();
            
         
-        builder.Services.AddCors(options =>
-        {
-            options.AddPolicy("CorsPolicy", builder => 
-                builder.WithOrigins($"http://localhost")
-                       .AllowAnyOrigin()
-                       .AllowAnyMethod()
-                       .AllowAnyHeader());
-        });
+        // builder.Services.AddCors(options =>
+        // {
+        //     options.AddPolicy("CorsPolicy", builder => 
+        //         builder.WithOrigins($"http://localhost")
+        //                .AllowAnyOrigin()
+        //                .AllowAnyMethod()
+        //                .AllowAnyHeader());
+        // });
 
         return builder.Build();
     }

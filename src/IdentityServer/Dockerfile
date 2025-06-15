@@ -1,23 +1,17 @@
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /app
+
+COPY Carsties.sln ./
+COPY src/IdentityService/IdentityService.csproj ./src/IdentityService/
+
+RUN dotnet restore ./src/IdentityService/IdentityService.csproj
+
+COPY . . 
+RUN dotnet publish ./src/IdentityService/IdentityService.csproj -c Release -o /app/publish
+
+# Runtime Stage
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 EXPOSE 80
-
-ENV ASPNETCORE_URLS=http://+:80
-
-FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-ARG configuration=Release
-WORKDIR /src
-COPY ["src/IdentityServer/IdentityServer.csproj", "src/IdentityServer/"]
-RUN dotnet restore "src/IdentityServer/IdentityServer.csproj"
-COPY . .
-WORKDIR "/src/src/IdentityServer"
-RUN dotnet build "IdentityServer.csproj" -c $configuration -o /app/build
-
-FROM build AS publish
-ARG configuration=Release
-RUN dotnet publish "IdentityServer.csproj" -c $configuration -o /app/publish /p:UseAppHost=false
-
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "IdentityServer.dll"]
+COPY --from=build /app/publish .
+ENTRYPOINT ["dotnet", "IdentityService.dll"]

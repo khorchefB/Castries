@@ -23,7 +23,6 @@ services:
       - /var/lib/mongodb/data
   rabbitMq:
     container_name: rabbitMq
-    hostname: rabbitMq
     image: rabbitmq:3-management-alpine
     restart: always
     ports:
@@ -59,7 +58,7 @@ services:
       - RabbitMq__Host=amqp://rabbitMq:5672
       - RabbitMq__Username=guest
       - RabbitMq__Password=guest
-      - AuctionServiceUrl=auction-svc
+      - AuctionServiceUrl=http://auction-svc
     ports:
       - 7002:80
     depends_on:
@@ -78,6 +77,9 @@ services:
       - 5001:80
     depends_on:
       - postgres
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
   gateway-svc:
     image: gateway-svc:latest
     build:
