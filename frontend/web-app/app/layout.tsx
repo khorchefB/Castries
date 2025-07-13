@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import NavBar from "./nav/NavBar";
+import ToastProvider from "./providers/ToastProvider";
 
 export const metadata: Metadata = {
   title: "Carsties",
@@ -15,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <ToastProvider/>
         <NavBar />
         <main className="container mx-auto px-5 pt-10">
           {children}

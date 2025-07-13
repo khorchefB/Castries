@@ -76,6 +76,8 @@ services:
     ports:
       - 5001:80
     depends_on:
+      - auction-svc
+      - search-svc
       - postgres
     volumes:
       - /etc/localtime:/etc/localtime:ro

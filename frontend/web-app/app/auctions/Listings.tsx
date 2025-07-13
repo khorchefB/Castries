@@ -1,5 +1,5 @@
 'use client';
-import { Auction, PagedResult } from "@/index";
+import { Auction, PagedResult } from "@/types/index";
 import AuctionCard from "./AuctionCard";
 import AppPagination from "../components/AppPagination";
 import { getData } from "../actions/auctionsAction";
@@ -17,8 +17,10 @@ export default function Home() {
         pagesize: state.pageSize,
         searchTerm: state.searchTerm,
         orderBy: state.orderBy,
-        filterBy: state.filterBy
-    })));
+        filterBy: state.filterBy,
+        seller: state.seller,
+        winner: state.winner
+    })));   
 
     const setParams = useParamsStore(state => state.setParams);
     const url = qs.stringifyUrl({url:'', query: params}, {skipEmptyString: true});
@@ -51,7 +53,7 @@ export default function Home() {
             {/* <AppPagination currentPage={1} pageCount={data.pageCount} /> */}
             <AppPagination pageChanged={setPageNumber} currentPage={params.pageNumber} pageCount={data.pageCount} />
         </div></>
-        )};
+        )}
     
         </>
     );

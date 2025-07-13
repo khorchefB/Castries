@@ -1,6 +1,40 @@
 {
     "configurations": [
         {
+            "name": "Next.js: Debug",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run",
+                "dev"
+            ],
+            
+            "cwd": "${workspaceFolder}/frontend/web-app/",
+            "console": "integratedTerminal",
+            "sourceMaps": true
+        },
+        {
+            "name": ".NET Core Launch (web)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/src/IdentityServer/bin/Debug/net8.0/IdentityServer.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/IdentityServer",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/src/IdentityServer/Views"
+            }
+        },
+        {
             "name": "Containers .NET Attach (Preview)",
             "type": "docker",
             "request": "attach",

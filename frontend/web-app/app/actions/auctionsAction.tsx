@@ -1,7 +1,7 @@
 'use server';
-import { auth } from "@/auth";
-import { Auction, PagedResult } from "@/index";
-import { Console } from "console";
+import { Auction, PagedResult } from "@/types/index";
+import { fetchWrapper } from "../lib/fetchWrapper";
+import { FieldValues } from "react-hook-form";
 
 
 export async function getData(query: string): Promise<PagedResult<Auction>> {
@@ -12,24 +12,25 @@ export async function getData(query: string): Promise<PagedResult<Auction>> {
     return res.json();
 }
 
-
 export async function updateAuctionTest(): Promise<{status: number, message: string}> {
-    const session = await auth();
     const data = {
         mileage: Math.floor(Math.random() * 10000) + 1
     } 
-    console.log('data:', data);
-    const res = await fetch('http://localhost:6001/auctions/afbee524-5972-4075-8800-7d1f9d7b0a0c', {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${session?.accessToken}`
-        },
-        body: JSON.stringify(data)
-    });
-    console.log('JSON.stringify(data):', JSON.stringify(data));
+    return fetchWrapper.put('auctions/afbee524-5972-4075-8800-7d1f9d7b0a0c', data);
+}
 
-    if (!res.ok) return {status: res.status, message: await res.statusText}
+export async function createAuction(data: FieldValues){
+    return fetchWrapper.post('auctions', data);
+}
 
-    return  {status: res.status, message: await res.statusText};
+export async function updateAuction(data: FieldValues, id: string) {
+    return await fetchWrapper.put(`auctions/${id}`, data);
+}
+
+export async function deleteAuction(id: string) {
+    return await fetchWrapper.del(`auctions/${id}`);
+}
+
+export async function getDetailedViewData(id: string): Promise<Auction> {
+    return fetchWrapper.get(`auctions/${id}`);
 }

@@ -36,3 +36,4 @@ C:\Users\kamel.bouyacoub\udemyProject\Casties\src\GatewayService\obj\Debug\net8.
 C:\Users\kamel.bouyacoub\udemyProject\Casties\src\GatewayService\obj\Debug\net8.0\GatewayService.pdb
 C:\Users\kamel.bouyacoub\udemyProject\Casties\src\GatewayService\obj\Debug\net8.0\GatewayService.genruntimeconfig.cache
 C:\Users\kamel.bouyacoub\udemyProject\Casties\src\GatewayService\obj\Debug\net8.0\ref\GatewayService.dll
+C:\Users\kamel.bouyacoub\udemyProject\Casties\src\GatewayService\bin\Debug\net8.0\appsettings.Docker.json
