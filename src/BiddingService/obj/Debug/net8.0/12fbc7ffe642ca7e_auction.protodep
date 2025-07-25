@@ -1,0 +1,2 @@
+obj\Debug\net8.0\protos/Auction.cs \
+obj\Debug\net8.0\protos/AuctionGrpc.cs: protos/auction.proto

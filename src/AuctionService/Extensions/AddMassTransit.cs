@@ -14,8 +14,6 @@ public static class AddMassTransit
           config.AddConsumers(assembly);
           config.UsingRabbitMq((context, configurator) =>
           {
-            var uri = configuration["RabbitMq:Host"];
-            Console.WriteLine($"RabbitMQ Host: {uri}");
               configurator.Host(new Uri(configuration["RabbitMq:Host"]!), host =>
               {
                   host.Username(configuration["RabbitMq:UserName"]);

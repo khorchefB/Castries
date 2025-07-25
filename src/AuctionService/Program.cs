@@ -1,4 +1,5 @@
 
+using AuctionService.Services;
 using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,9 +19,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     options.TokenValidationParameters.ValidateAudience = false;
                     options.TokenValidationParameters.NameClaimType = "username";
                 });
+builder.Services.AddGrpc();
 
 // Configure the HTTP request pipeline.
  var app = builder.Build();
+app.MapGrpcService<GrpcAuctionService>();
 app.UseAuthentication();
 app.UseAuthorization();
 
