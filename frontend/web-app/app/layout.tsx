@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import NavBar from "./nav/NavBar";
 import ToastProvider from "./providers/ToastProvider";
+import SignalRProvider from "./providers/SignalRProvider";
+ import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
   title: "Carsties",
@@ -16,11 +18,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <SessionProvider>
         <ToastProvider/>
         <NavBar />
         <main className="container mx-auto px-5 pt-10">
-          {children}
+          <SignalRProvider>
+            {children}
+          </SignalRProvider>
         </main>
+       </SessionProvider>
       </body>
     </html>
   );

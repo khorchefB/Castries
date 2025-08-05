@@ -120,7 +120,7 @@ services:
     ports:
       - 6001:80
   notify-svc:
-    image: trycatchlearn/notify-svc:latest
+    image: notify-svc
     build: 
       context: .
       dockerfile: src/NotificationService/Dockerfile
